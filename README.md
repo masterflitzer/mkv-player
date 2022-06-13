@@ -34,5 +34,13 @@ location ~* \.mkv$ {
     if ($is_args = "") {
         return $scheme://$host/mkv-player/?path=$request_uri;
     }
+
+    include mime.types;
+    types {
+        audio/webm mka;
+        video/webm mkv mks;
+        video/webm-3d mk3d;
+    }
+    default_type video/webm;
 }
 ```
